@@ -1,0 +1,20 @@
+task: rgb_kernel
+data:
+  dir: /path/to/rgb_images
+  patch_size: 160
+  kernel_size: 21
+  blur_families: [gauss_aniso, motion, defocus]
+  noise: {sigma_min: 0.0, sigma_max: 0.02}
+  downsample: {enabled: false, stride: 2}
+train:
+  epochs: 20
+  batch_size: 8
+  lr: 5e-4
+  seed: 42
+loss:
+  lambda_recon: 2.0
+  lambda_center: 0.002
+  lambda_tv: 0.0
+log:
+  out_dir: runs
+  save_every: 1
